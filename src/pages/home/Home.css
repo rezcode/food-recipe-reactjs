@@ -1,0 +1,91 @@
+.side-background {
+  background-color: #efc81a;
+  height: 100vh;
+}
+
+.new-recipe-background {
+  background-color: #efc81a;
+  height: 65vh;
+}
+
+.image-landing {
+  margin-top: 50px;
+  width: 650px;
+  z-index: 1 !important;
+  position: absolute;
+}
+
+.card-new-recipe {
+  position: absolute;
+  left: 75px;
+  top: 50px;
+}
+
+.image-new-recipe {
+  width: 450px;
+}
+
+.name-new-recipe {
+  width: 470px;
+}
+
+.title-landing {
+  color: #2e266f;
+  position: absolute;
+  width: 757px;
+  height: 157px;
+  left: 72px;
+  top: 290px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 90px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.search-landing {
+  position: absolute;
+  width: 570px;
+  height: 60px;
+  left: 72px;
+  top: 420px;
+}
+
+.title-new-recipe {
+  border-left: 20px solid #efc81a;
+  height: 80px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.line-new-recipe {
+  border: 1px solid;
+  width: 100px;
+}
+
+.ingredients-new-recipe {
+  font-size: 17px;
+  line-height: 32px;
+  width: 570px;
+  color: #3f3a3a;
+  margin: 0;
+  position: absolute;
+  top: 1030px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.title-six-recent {
+  margin-top: 150px;
+  margin-bottom: 50px;
+  border-left: 20px solid #efc81a;
+  height: 80px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.image-recent-recipe {
+  width: 300px;
+}
