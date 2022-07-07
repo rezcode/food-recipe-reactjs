@@ -4,6 +4,9 @@ import Nav from "react-bootstrap/Nav";
 import "./Home.css";
 import imageLanding from "../../assets/images/—Pngtree—delicious food_568171 1.png";
 import imageNewRecipe from "../../assets/images/Rectangle 313.png";
+import imageRecentRecipe1 from "../../assets/images/Rectangle 314.png";
+import imageRecentRecipe2 from "../../assets/images/Rectangle 315.png";
+import imageRecentRecipe3 from "../../assets/images/Rectangle 316.png";
 
 function TextLinkExample() {
   return (
@@ -104,44 +107,55 @@ function TextLinkExample() {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-              </div>
+        <div className="row justify-content-center">
+          <div className="col-sm-3">
+            <div className="card card-recent-recipe">
+              <img
+                src={imageRecentRecipe1}
+                className="card-img-top"
+                alt="..."
+              />
+              <h5 className="card-title name-card-recent">
+                Special title treatment
+              </h5>
             </div>
           </div>
-          <div className="col-sm-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-              </div>
+          <div className="col-sm-3">
+            <div className="card card-recent-recipe">
+              <img
+                src={imageRecentRecipe2}
+                className="card-img-top"
+                alt="..."
+              />
+              <h5 className="card-title name-card-recent">
+                Special title treatment
+              </h5>
             </div>
           </div>
-          <div className="col-sm-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Special title treatment</h5>
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-              </div>
+          <div className="col-sm-3">
+            <div className="card card-recent-recipe">
+              <img
+                src={imageRecentRecipe3}
+                className="card-img-top"
+                alt="..."
+              />
+              <h5 className="card-title name-card-recent">
+                Special title treatment
+              </h5>
             </div>
           </div>
         </div>
       </div>
 
       {/* footer */}
+      <div className="row footer justify-content-center">
+        <div className="col-md-5">
+          <div className="text-center">
+            <h2 className="footer-title">Eat, Cook, Repeat</h2>
+            <p>Share your best recipe by uploading here !</p>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
