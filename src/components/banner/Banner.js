@@ -1,7 +1,7 @@
 import React from "react";
 import imageLanding from "../../assets/images/—Pngtree—delicious food_568171 1.png";
 
-export default function Banner() {
+const Banner = () => {
   return (
     <>
       <div className="row mt-5">
@@ -33,4 +33,6 @@ export default function Banner() {
       </div>
     </>
   );
-}
+};
+
+export default Banner;

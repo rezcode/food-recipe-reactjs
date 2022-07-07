@@ -1,7 +1,7 @@
 import React from "react";
 import imageNewRecipe from "../../assets/images/Rectangle 313.png";
 
-export default function NewRecipe() {
+const NewRecipe = () => {
   return (
     <>
       <div className="row">
@@ -42,4 +42,6 @@ export default function NewRecipe() {
       </div>
     </>
   );
-}
+};
+
+export default NewRecipe;

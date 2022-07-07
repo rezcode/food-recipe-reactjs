@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import urlApi from "../../config/UrlApi";
 
-export default function login() {
+const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate(); // untuk redirect ke login
+
+  const register = async (e) => {
+    e.preventDefault(); //agar ketika submit page tidak reload
+    try {
+      await axios.post(`${urlApi}/auth/register`, {
+        username,
+        email,
+        phoneNumber,
+        password,
+      });
+      navigate("/login");
+    } catch (error) {
+      if (error.response) {
+        console.log(username);
+        console.log(error.response);
+      }
+    }
+  };
+
   return (
     <>
       <div>
@@ -15,26 +42,44 @@ export default function login() {
               <form>
                 <div className="mb-3">
                   <label className="form-label">Username</label>
-                  <input type="text" className="form-control rounded-pill" />
+                  <input
+                    type="text"
+                    className="form-control rounded-pill"
+                    name="username"
+                    onInput={(e) => setUsername(e.target.value)}
+                  />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Email address</label>
-                  <input type="email" className="form-control rounded-pill" />
+                  <input
+                    type="email"
+                    className="form-control rounded-pill"
+                    name="email"
+                    onInput={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Phone Number</label>
-                  <input type="text" className="form-control rounded-pill" />
+                  <input
+                    type="text"
+                    className="form-control rounded-pill"
+                    name="phoneNumber"
+                    onInput={(e) => setPhoneNumber(e.target.value)}
+                  />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Password</label>
                   <input
                     type="password"
                     className="form-control rounded-pill"
+                    name="password"
+                    onInput={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <button
                   type="button"
                   className="btn btn-outline-primary rounded-pill px-5"
+                  onClick={register}
                 >
                   Sign Up
                 </button>
@@ -57,4 +102,6 @@ export default function login() {
       </div>
     </>
   );
-}
+};
+
+export default Register;

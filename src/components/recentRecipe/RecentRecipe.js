@@ -3,7 +3,7 @@ import imageRecentRecipe1 from "../../assets/images/Rectangle 314.png";
 import imageRecentRecipe2 from "../../assets/images/Rectangle 315.png";
 import imageRecentRecipe3 from "../../assets/images/Rectangle 316.png";
 
-export default function RecentRecipe() {
+const RecentRecipe = () => {
   return (
     <>
       <div className="row">
@@ -57,4 +57,6 @@ export default function RecentRecipe() {
       </div>
     </>
   );
-}
+};
+
+export default RecentRecipe;

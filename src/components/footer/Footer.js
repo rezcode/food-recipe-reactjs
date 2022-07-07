@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       <div className="row footer justify-content-center">
@@ -13,4 +13,6 @@ export default function Footer() {
       </div>
     </>
   );
-}
+};
+
+export default Footer;

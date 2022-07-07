@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 
-export default function Navibar() {
+const Navibar = () => {
   return (
     <>
       <Navbar fixed="top" bg="light">
@@ -45,4 +45,6 @@ export default function Navibar() {
       </Navbar>
     </>
   );
-}
+};
+
+export default Navibar;
