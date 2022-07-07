@@ -110,3 +110,18 @@
   margin-top: 150px;
   margin-bottom: 30px;
 }
+
+.brand-nav {
+  text-decoration: none;
+  color: #2e266f;
+  font-weight: bolder;
+}
+
+.nav-menu {
+  text-decoration: none;
+  color: grey;
+}
+
+.nav-menu:hover {
+  color: black;
+}
