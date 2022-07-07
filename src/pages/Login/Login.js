@@ -1,6 +1,7 @@
 import React from "react";
 import "./login.css";
 import logo from "../../assets/images/bibimbap (1).png";
+import { Link } from "react-router-dom";
 
 export default function login() {
   return (
@@ -44,12 +45,14 @@ export default function login() {
               <div className="row my-3">
                 <hr id="login-line" />
               </div>
-              <button
-                type="button"
-                className="btn btn-outline-danger rounded-pill px-5"
-              >
-                Create New Account
-              </button>
+              <Link to="/register">
+                <button
+                  type="button"
+                  className="btn btn-outline-danger rounded-pill px-5"
+                >
+                  Create New Account
+                </button>
+              </Link>
             </div>
             <div className="col-md-6">
               <img src={logo} alt="logo" className="logo-login rounded-pill" />

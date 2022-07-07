@@ -1,5 +1,6 @@
 import React from "react";
 import "./register.css";
+import { Link } from "react-router-dom";
 
 export default function login() {
   return (
@@ -42,12 +43,14 @@ export default function login() {
                 <hr id="login-line" />
               </div>
               <p>already have an account?</p>
-              <button
-                type="button"
-                className="btn btn-outline-danger rounded-pill px-5"
-              >
-                Log In
-              </button>
+              <Link to="/login">
+                <button
+                  type="button"
+                  className="btn btn-outline-danger rounded-pill px-5"
+                >
+                  Log In
+                </button>
+              </Link>
             </div>
           </div>
         </div>
