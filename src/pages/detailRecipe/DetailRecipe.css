@@ -1,0 +1,22 @@
+.title-detail-recipe {
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 90px;
+}
+
+.image-detail {
+  width: 600px;
+}
+
+.button-comment {
+  width: 350px !important;
+}
+
+.img-user-comment {
+  border-radius: 50%;
+  width: 80px;
+}
+
+.user-name-comment {
+  font-weight: bolder;
+}

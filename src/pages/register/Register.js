@@ -9,7 +9,6 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
   const navigate = useNavigate(); // untuk redirect ke login
 
   const register = async (e) => {
@@ -24,7 +23,6 @@ const Register = () => {
       navigate("/login");
     } catch (error) {
       if (error.response) {
-        console.log(username);
         console.log(error.response);
       }
     }
