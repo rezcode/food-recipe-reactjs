@@ -4,8 +4,19 @@
   line-height: 90px;
 }
 
-.image-detail {
+.image-detail-wrapper {
   width: 600px;
+  height: 450px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.image-detail {
+  display: block;
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 .button-comment {

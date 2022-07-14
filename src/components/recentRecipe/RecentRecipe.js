@@ -1,9 +1,40 @@
 import React from "react";
-import imageRecentRecipe1 from "../../assets/images/Rectangle 314.png";
-import imageRecentRecipe2 from "../../assets/images/Rectangle 315.png";
-import imageRecentRecipe3 from "../../assets/images/Rectangle 316.png";
+import urlApi from "../../config/UrlApi";
+import NotFound from "../notFound/NotFound";
+import { Link } from "react-router-dom";
 
-const RecentRecipe = () => {
+const RecentRecipe = (props) => {
+  const renderRecentRecipe = () => {
+    let { data } = props;
+    if (data?.length > 0) {
+      let jsx = data?.map((item) => {
+        return (
+          <>
+            <div className="col-md-4 text-center">
+              <Link to={`/recipe-detail/${item.id}`}>
+                <div className="card card-recent-recipe mb-4">
+                  <img
+                    crossOrigin="anonymous"
+                    src={`${urlApi}/${item.food_image.substring(
+                      7,
+                      item.food_image.length
+                    )}`}
+                    className="card-img-top image-recent"
+                    alt="..."
+                  />
+                  <h5 className="card-title name-card-recent">{item.title}</h5>
+                </div>
+              </Link>
+            </div>
+          </>
+        );
+      });
+      return jsx;
+    } else {
+      return <NotFound />;
+    }
+  };
+
   return (
     <>
       <div className="row">
@@ -16,41 +47,10 @@ const RecentRecipe = () => {
             </div>
           </div>
         </div>
-        <div className="row justify-content-center">
-          <div className="col-sm-3">
-            <div className="card card-recent-recipe">
-              <img
-                src={imageRecentRecipe1}
-                className="card-img-top"
-                alt="..."
-              />
-              <h5 className="card-title name-card-recent">
-                Special title treatment
-              </h5>
-            </div>
-          </div>
-          <div className="col-sm-3">
-            <div className="card card-recent-recipe">
-              <img
-                src={imageRecentRecipe2}
-                className="card-img-top"
-                alt="..."
-              />
-              <h5 className="card-title name-card-recent">
-                Special title treatment
-              </h5>
-            </div>
-          </div>
-          <div className="col-sm-3">
-            <div className="card card-recent-recipe">
-              <img
-                src={imageRecentRecipe3}
-                className="card-img-top"
-                alt="..."
-              />
-              <h5 className="card-title name-card-recent">
-                Special title treatment
-              </h5>
+        <div className="row">
+          <div className="container">
+            <div className="row justify-content-center classss">
+              {renderRecentRecipe()}
             </div>
           </div>
         </div>

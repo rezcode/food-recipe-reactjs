@@ -3,33 +3,46 @@ import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import urlApi from "../../config/UrlApi";
+import LoadingButton from "../../components/loadingComp/LoadingButton";
+import SwalToastMixin from "../../utils/SwalToastMixin";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
   const navigate = useNavigate(); // untuk redirect ke login
 
-  const register = async (e) => {
+  const register = (e) => {
     e.preventDefault(); //agar ketika submit page tidak reload
-    try {
-      await axios.post(`${urlApi}/auth/register`, {
-        username,
+    setIsLoading(true);
+    axios
+      .post(`${urlApi}/auth/register`, {
+        name,
         email,
         phoneNumber,
         password,
+      })
+      .then((res) => {
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsError(true);
+        setErrorMsg(err?.response?.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-      navigate("/login");
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response);
-      }
-    }
   };
 
   return (
     <>
+      {isError ? <SwalToastMixin icon="error" title={errorMsg} /> : null}
       <div>
         <div className="bg" />
         <div className="bg bg2" />
@@ -43,8 +56,8 @@ const Register = () => {
                   <input
                     type="text"
                     className="form-control rounded-pill"
-                    name="username"
-                    onInput={(e) => setUsername(e.target.value)}
+                    name="name"
+                    onInput={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
@@ -76,10 +89,10 @@ const Register = () => {
                 </div>
                 <button
                   type="button"
-                  className="btn btn-outline-primary rounded-pill px-5"
+                  className="btn btn-primary rounded-pill px-5 mt-2"
                   onClick={register}
                 >
-                  Sign Up
+                  {isLoading ? <LoadingButton /> : "Sign Up"}
                 </button>
               </form>
               <div className="row my-3">

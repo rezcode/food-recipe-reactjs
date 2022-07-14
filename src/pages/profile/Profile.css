@@ -1,0 +1,22 @@
+.profile-wrapper {
+  margin-top: 65px !important;
+  height: 60vh;
+}
+
+.flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.image-profile {
+  width: 172px;
+  border-radius: 50%;
+}
+
+.name-profile {
+  width: 182px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+}

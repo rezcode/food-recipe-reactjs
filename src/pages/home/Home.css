@@ -16,13 +16,22 @@
 }
 
 .card-new-recipe {
-  position: absolute;
-  left: 75px;
-  top: 50px;
+  margin-left: 131px;
+  margin-top: 78px;
+  width: 420px;
+  height: 450px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px !important;
 }
 
 .image-new-recipe {
-  width: 450px;
+  display: block;
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  transform: translate(-30%, -50%);
 }
 
 .name-new-recipe {
@@ -71,10 +80,7 @@
   width: 570px;
   color: #3f3a3a;
   margin: 0;
-  position: absolute;
   top: 1030px;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .title-six-recent {
@@ -88,6 +94,33 @@
 
 .card-recent-recipe {
   width: 300px;
+  height: 320px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 15px !important;
+  transition: transform 0.2s;
+}
+
+.card-recent-recipe:after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, transparent 0, transparent 30%, #000);
+  opacity: 0.8;
+}
+
+.card-recent-recipe:hover {
+  transform: scale(1.05);
+}
+
+.image-recent {
+  display: block;
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 .name-card-recent {
@@ -95,6 +128,9 @@
   bottom: 3%;
   left: 5%;
   width: 50%;
+  text-align: left;
+  z-index: 4;
+  color: white;
 }
 
 .footer {
@@ -124,4 +160,9 @@
 
 .nav-menu:hover {
   color: black;
+}
+
+.classss {
+  margin-left: 230px !important;
+  margin-right: 230px !important;
 }
