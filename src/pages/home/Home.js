@@ -14,10 +14,6 @@ function Home() {
   const [recentRecipe, setRecentRecipe] = useState([]);
 
   useEffect(() => {
-    // if (localStorage.getItem("token")) {
-    //   window.location.href = "/";
-    // }
-    // console.log(localStorage.getItem("username"));
     getNewRecipe();
     getRecentRecipe();
   }, []);
