@@ -14,7 +14,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     setIsLoading(true);
     axios
       .post(`${urlApi}/auth/login`, {
@@ -33,11 +34,16 @@ export default function Login() {
         window.location.href = "/";
       })
       .catch((err) => {
+        const responseError =
+          err?.response?.data?.error ?? err?.response?.data?.message;
+        setErrorMsg(responseError);
         setIsError(true);
-        setErrorMsg(err?.response?.data?.error);
       })
       .finally(() => {
         setIsLoading(false);
+        setTimeout(() => {
+          setIsError(false);
+        }, 1000); // delay error catch reveal
       });
   };
 
@@ -51,7 +57,11 @@ export default function Login() {
         <div className="content">
           <div className="row">
             <div className="col-md-6">
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form
+                onSubmit={(e) => {
+                  handleLogin();
+                }}
+              >
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
                     Email address
@@ -61,6 +71,7 @@ export default function Login() {
                     className="form-control rounded-pill"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
@@ -72,11 +83,12 @@ export default function Login() {
                     type="password"
                     className="form-control rounded-pill"
                     id="exampleInputPassword1"
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <button
-                  type="button"
+                  type="submit"
                   className="btn btn-primary rounded-pill px-5"
                   onClick={handleLogin}
                   disabled={isLoading}

@@ -31,12 +31,14 @@ const Register = () => {
         navigate("/login");
       })
       .catch((err) => {
-        console.log(err);
-        setIsError(true);
         setErrorMsg(err?.response?.data);
+        setIsError(true);
       })
       .finally(() => {
         setIsLoading(false);
+        setTimeout(() => {
+          setIsError(false);
+        }, 1000);
       });
   };
 
@@ -47,10 +49,10 @@ const Register = () => {
         <div className="bg" />
         <div className="bg bg2" />
         <div className="bg bg3" />
-        <div className="content">
+        <div className="content-register">
           <div className="row justify-content-center">
             <div className="col-md-9">
-              <form>
+              <form onSubmit={register}>
                 <div className="mb-3">
                   <label className="form-label">Username</label>
                   <input
