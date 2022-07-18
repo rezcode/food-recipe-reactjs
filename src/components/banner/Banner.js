@@ -1,7 +1,7 @@
 import React from "react";
 import imageLanding from "../../assets/images/—Pngtree—delicious food_568171 1.png";
 
-const Banner = () => {
+const Banner = (props) => {
   return (
     <>
       <div className="row mt-5">
@@ -19,6 +19,9 @@ const Banner = () => {
                   type="text"
                   className="form-control"
                   aria-describedby="addon-wrapping"
+                  onChange={(e) => {
+                    props.sentToParent(e.target.value);
+                  }}
                 />
               </div>
             </div>

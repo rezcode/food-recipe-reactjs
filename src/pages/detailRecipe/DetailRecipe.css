@@ -31,3 +31,16 @@
 .user-name-comment {
   font-weight: bolder;
 }
+
+/* Button Edit and Delete */
+.button-delete {
+  position: absolute;
+  top: 85%;
+  left: 83%;
+}
+
+.button-edit {
+  top: 85%;
+  position: absolute;
+  left: 75%;
+}

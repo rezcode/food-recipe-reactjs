@@ -1,9 +1,29 @@
 import React from "react";
 import NotFound from "../notFound/NotFound";
 import urlApi from "../../config/UrlApi";
+import { ProfileContex } from "../../config/Contex";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const DetailRecipeComp = (props) => {
   const { data } = props;
+  const { id, token } = ProfileContex?._currentValue2;
+  const idUser = id;
+
+  console.log(data);
+
+  const handleDeleteRecipe = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    axios
+      .delete(`${urlApi}/recipes/${data[0]?.id}`, config)
+      .then((res) => {
+        window.location.href = "/profile";
+        Swal.fire("Delete Success");
+      })
+      .catch((err) => console.log(err));
+  };
 
   const renderRecipeDetail = () => {
     if (data?.length) {
@@ -27,6 +47,20 @@ const DetailRecipeComp = (props) => {
                 className="img-fluid image-detail rounded"
                 alt="..."
               />
+              {idUser == data[0]?.user_id ? (
+                <>
+                  <button type="button" className="btn btn-primary button-edit">
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-danger button-delete"
+                    onClick={handleDeleteRecipe}
+                  >
+                    Delete
+                  </button>
+                </>
+              ) : null}
             </div>
           </div>
           <div className="row container mt-5">
