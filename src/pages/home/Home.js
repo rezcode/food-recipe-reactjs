@@ -22,8 +22,6 @@ function Home() {
     getRecentRecipe();
   }, []);
 
-  console.log("isParentData", isParentData);
-
   const getDataRecipe = () => {
     axios(`${urlApi}/recipes`)
       .then((res) => {
@@ -73,15 +71,12 @@ function Home() {
                 }
               })
               .map((recipeList, index) => (
-                <div className="col-md-3 text-center">
+                <div key={index} className="col-md-3 text-center">
                   <Link to={`/recipe-detail/${recipeList.id}`}>
                     <div className="card card-my-recipe mb-4">
                       <img
                         crossOrigin="anonymous"
-                        src={`${urlApi}/${recipeList.food_image.substring(
-                          7,
-                          recipeList.food_image.length
-                        )}`}
+                        src={recipeList.food_image}
                         className="card-img-top image-recent"
                         alt="..."
                       />

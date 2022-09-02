@@ -24,10 +24,7 @@ const NewRecipe = (props) => {
                     <div className="card text-white card-new-recipe">
                       <img
                         crossOrigin="anonymous"
-                        src={`${urlApi}/${props.data[0].food_image.substring(
-                          7,
-                          props.data[0].food_image.length
-                        )}`}
+                        src={props.data[0].food_image}
                         className="image-new-recipe"
                         alt="..."
                       />

@@ -34,6 +34,7 @@
   overflow: hidden;
   border-radius: 15px !important;
   transition: transform 0.2s;
+  object-fit: cover;
 }
 
 .image-new-recipe::after {
@@ -133,6 +134,7 @@
   position: absolute;
   min-height: 100%;
   min-width: 100%;
+  object-fit: cover;
 }
 
 .name-card-recent {
