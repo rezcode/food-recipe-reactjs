@@ -9,14 +9,32 @@ import axios from "axios";
 import MyRecipe from "../../components/myRecipe/MyRecipe";
 
 const Profile = () => {
+  const [userData, setUserData] = useState([]);
   const [dataMyRecipe, SetDataMyRecipe] = useState([]);
-
-  const { username, imageProfile, id } = ProfileContex?._currentValue2;
+  const { username, imageProfile, id, token } = ProfileContex?._currentValue2;
   const idUser = parseInt(id);
 
+  const configHeaders = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   useEffect(() => {
+    getDataUser();
     getDataMyRecipe();
   }, []);
+
+  const getDataUser = () => {
+    axios
+      .get(`${urlApi}/users/${idUser}`, configHeaders)
+      .then((res) => {
+        setUserData(res?.data?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const getDataMyRecipe = async () => {
     try {
@@ -31,15 +49,19 @@ const Profile = () => {
     <>
       <div className="row profile-wrapper justify-content-center text-center flex-vertical-center">
         <div className="col-md-4">
-          <img
-            crossOrigin="anonymous"
-            src={`${urlApi}/${imageProfile.substring(7, imageProfile.length)}`}
-            className="image-profile"
-            alt="..."
-          />
-          <div className="row mt-3">
-            <h1 className="name-profile">{username}</h1>
-          </div>
+          {userData?.map((item, index) => (
+            <div key={index}>
+              <img
+                crossOrigin="anonymous"
+                src={item?.image_profile}
+                className="image-profile"
+                alt="..."
+              />
+              <div className="row mt-3">
+                <h1 className="name-profile">{item?.name}</h1>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

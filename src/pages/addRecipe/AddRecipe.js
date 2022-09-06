@@ -30,7 +30,7 @@ const AddRecipe = () => {
       formData.append("title", title);
       formData.append("ingredients", ingredients);
       formData.append("foodImage", saveImage);
-      formData.append("userId", parseInt(id));
+      formData.append("id_user", parseInt(id));
 
       const config = {
         headers: {
@@ -71,6 +71,22 @@ const AddRecipe = () => {
                 aria-label=".form-control-lg example"
                 onChange={(e) => setTitle(e.target.value)}
               />
+            </div>
+            <div className="form-floating mt-3">
+              <select
+                className="form-select"
+                id="floatingSelect"
+                aria-label="Floating label select example"
+              >
+                <option selected disabled>
+                  Pick Category Food
+                </option>
+                <option value={1}>Cakes</option>
+                <option value={2}>Dessert</option>
+                <option value={3}>Fat Food</option>
+                <option value={4}>Vegan Food</option>
+              </select>
+              <label htmlFor="floatingSelect">Category</label>
             </div>
             <div className="row mt-3">
               <div className="form-floating" style={{ padding: "0px" }}>
