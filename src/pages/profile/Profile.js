@@ -4,7 +4,6 @@ import Tabs from "react-bootstrap/Tabs";
 import "./Profile.css";
 import NotFound from "../../components/notFound/NotFound";
 import { ProfileContex } from "../../config/Contex";
-import urlApi from "../../config/UrlApi";
 import axios from "axios";
 import MyRecipe from "../../components/myRecipe/MyRecipe";
 
@@ -27,7 +26,7 @@ const Profile = () => {
 
   const getDataUser = () => {
     axios
-      .get(`${urlApi}/users/${idUser}`, configHeaders)
+      .get(`${process.env.REACT_APP_API_URL}/users/${idUser}`, configHeaders)
       .then((res) => {
         setUserData(res?.data?.data);
       })
@@ -38,7 +37,9 @@ const Profile = () => {
 
   const getDataMyRecipe = async () => {
     try {
-      const response = await axios.get(`${urlApi}/users/find/recipe/${idUser}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/find/recipe/${idUser}`
+      );
       SetDataMyRecipe(response?.data);
     } catch (error) {
       console.log(error, "<=== ini error getDataRecipe");

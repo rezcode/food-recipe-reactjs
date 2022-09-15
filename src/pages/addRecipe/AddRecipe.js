@@ -3,7 +3,6 @@ import "./AddRecipe.css";
 import iconUpload from "../../assets/images/icon-upload.png";
 import Swal from "sweetalert2";
 import axios from "axios";
-import urlApi from "../../config/UrlApi";
 import { ProfileContex } from "../../config/Contex";
 
 const AddRecipe = () => {
@@ -40,7 +39,7 @@ const AddRecipe = () => {
       };
 
       axios
-        .post(`${urlApi}/recipes/add`, formData, config)
+        .post(`${process.env.REACT_APP_API_URL}/recipes/add`, formData, config)
         .then((res) => {
           Swal.fire("add Recipe Success");
           window.location.href = "/";

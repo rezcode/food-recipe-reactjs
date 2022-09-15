@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import urlApi from "../../config/UrlApi";
 import axios from "axios";
 import { ProfileContex } from "../../config/Contex";
 import { useParams } from "react-router-dom";
@@ -21,10 +20,7 @@ const CommentDetailRecipe = (props) => {
                     <img
                       crossOrigin="anonymous"
                       className="img-user-comment"
-                      src={`${urlApi}/${item?.image_profile?.substring(
-                        7,
-                        item?.image_profile?.length
-                      )}`}
+                      src={item?.image_profile}
                       alt="Avatar"
                     />
                   </div>
@@ -65,7 +61,11 @@ const CommentDetailRecipe = (props) => {
         idUser: id,
       };
       axios
-        .post(`${urlApi}/comments/add`, bodyParameters, config)
+        .post(
+          `${process.env.REACT_APP_API_URL}/comments/add`,
+          bodyParameters,
+          config
+        )
         .then((res) => {
           window.location.href = `http://localhost:3000/recipe-detail/${idRecipe?.id}`;
         })

@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import Banner from "../../components/banner/Banner";
 import NewRecipe from "../../components/newRecipe/NewRecipe";
 import RecentRecipe from "../../components/recentRecipe/RecentRecipe";
-import urlApi from "../../config/UrlApi";
 
 function Home() {
   const [newRecipe, setNewRecipe] = useState([]);
@@ -23,7 +22,7 @@ function Home() {
   }, []);
 
   const getDataRecipe = () => {
-    axios(`${urlApi}/recipes`)
+    axios(`${process.env.REACT_APP_API_URL}/recipes`)
       .then((res) => {
         setRecipeList(res?.data?.data);
       })
@@ -34,7 +33,9 @@ function Home() {
 
   const getNewRecipe = async () => {
     try {
-      const response = await axios.get(`${urlApi}/recipes`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/recipes`
+      );
       const { data } = response.data;
       setNewRecipe(data);
     } catch (error) {
@@ -44,7 +45,9 @@ function Home() {
 
   const getRecentRecipe = async () => {
     try {
-      const response = await axios.get(`${urlApi}/recipes/find/recent`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/recipes/find/recent`
+      );
       const { data } = response.data;
       setRecentRecipe(data);
     } catch (error) {

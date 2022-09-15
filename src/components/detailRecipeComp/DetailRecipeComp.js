@@ -1,6 +1,5 @@
 import React from "react";
 import NotFound from "../notFound/NotFound";
-import urlApi from "../../config/UrlApi";
 import { ProfileContex } from "../../config/Contex";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -10,20 +9,20 @@ const DetailRecipeComp = (props) => {
   const { id, token } = ProfileContex?._currentValue2;
   const idUser = id;
 
-  console.log(data);
-
   const handleDeleteRecipe = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     axios
-      .delete(`${urlApi}/recipes/${data[0]?.id}`, config)
+      .delete(`${process.env.REACT_APP_API_URL}/recipes/${data[0]?.id}`, config)
       .then((res) => {
         window.location.href = "/profile";
         Swal.fire("Delete Success");
       })
       .catch((err) => console.log(err));
   };
+
+  console.log("data recipe", data);
 
   const renderRecipeDetail = () => {
     if (data?.length) {
@@ -40,10 +39,7 @@ const DetailRecipeComp = (props) => {
             <div className="col-md-6 text-center image-detail-wrapper">
               <img
                 crossOrigin="anonymous"
-                src={`${urlApi}/${data[0].food_image?.substring(
-                  7,
-                  data[0]?.food_image?.length
-                )}`}
+                src={`${data[0]?.food_image}`}
                 className="img-fluid image-detail rounded"
                 alt="..."
               />

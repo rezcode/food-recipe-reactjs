@@ -3,7 +3,6 @@ import "./DetailRecipe.css";
 import { useParams } from "react-router-dom";
 import DetailRecipeComp from "../../components/detailRecipeComp/DetailRecipeComp";
 import axios from "axios";
-import urlApi from "../../config/UrlApi";
 import "./DetailRecipe.css";
 import CommentDetailRecipe from "../../components/commentDetailRecipe/CommentDetailRecipe";
 
@@ -23,7 +22,9 @@ const DetailRecipe = () => {
 
   const getDataRecipe = async () => {
     try {
-      const response = await axios.get(`${urlApi}/recipes/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/recipes/${id}`
+      );
       const { data } = response.data;
       setDataRecipe(data);
     } catch (error) {
@@ -33,7 +34,9 @@ const DetailRecipe = () => {
 
   const getCommentRecipe = async () => {
     try {
-      const response = await axios.get(`${urlApi}/comments/recipe/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/comments/recipe/${id}`
+      );
       const { data } = response.data;
       setDataComment(data);
     } catch (error) {

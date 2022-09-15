@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import urlApi from "../../config/UrlApi";
 import LoadingButton from "../../components/loadingComp/LoadingButton";
 import SwalToastMixin from "../../utils/SwalToastMixin";
 
@@ -21,7 +20,7 @@ const Register = () => {
     e.preventDefault(); //agar ketika submit page tidak reload
     setIsLoading(true);
     axios
-      .post(`${urlApi}/auth/register`, {
+      .post(`${process.env.REACT_APP_API_URL}/auth/register`, {
         name,
         email,
         phoneNumber,

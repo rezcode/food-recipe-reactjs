@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import urlApi from "../../config/UrlApi";
 
 const MyRecipe = (props) => {
   const renderMyRecipe = () => {
@@ -11,10 +10,7 @@ const MyRecipe = (props) => {
             <div className="card card-my-recipe mb-4">
               <img
                 crossOrigin="anonymous"
-                src={`${urlApi}/${item?.food_image?.substring(
-                  7,
-                  item?.food_image?.length
-                )}`}
+                src={item?.food_image}
                 className="card-img-top image-recent"
                 alt="..."
               />

@@ -3,7 +3,6 @@ import "./login.css";
 import logo from "../../assets/images/bibimbap (1).png";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import urlApi from "../../config/UrlApi";
 import LoadingButton from "../../components/loadingComp/LoadingButton";
 import SwalToastMixin from "../../utils/SwalToastMixin";
 
@@ -18,7 +17,7 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true);
     axios
-      .post(`${urlApi}/auth/login`, {
+      .post(`${process.env.REACT_APP_API_URL}/auth/login`, {
         email,
         password,
       })
