@@ -9,6 +9,7 @@ import WithNav from "./components/navbarDisplay/WithNav";
 import Profile from "./pages/profile/Profile";
 import { ProfileContex } from "./config/Contex";
 import AddRecipe from "./pages/addRecipe/AddRecipe";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

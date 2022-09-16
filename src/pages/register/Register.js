@@ -1,49 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import LoadingButton from "../../components/loadingComp/LoadingButton";
-import SwalToastMixin from "../../utils/SwalToastMixin";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  register,
+  resetLoggedUser,
+} from "../../redux/features/auth/authSlice.js";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
-  const navigate = useNavigate(); // untuk redirect ke login
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const register = (e) => {
-    e.preventDefault(); //agar ketika submit page tidak reload
-    setIsLoading(true);
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/register`, {
-        name,
-        email,
-        phoneNumber,
-        password,
-      })
-      .then((res) => {
-        navigate("/login");
-      })
-      .catch((err) => {
-        setErrorMsg(err?.response?.data);
-        setIsError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setTimeout(() => {
-          setIsError(false);
-        }, 1000);
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      Swal.fire({
+        icon: "error",
+        text: message,
       });
+    }
+    if (isSuccess) {
+      Swal.fire({
+        icon: "success",
+        text: message,
+      }).then(() => navigate("/login"));
+    }
+    dispatch(resetLoggedUser());
+  }, [user, isError, isSuccess, navigate, message, dispatch]);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const body = {
+      name,
+      email,
+      phoneNumber,
+      password,
+    };
+    dispatch(register(body));
   };
 
   return (
     <>
-      {isError ? <SwalToastMixin icon="error" title={errorMsg} /> : null}
       <div>
         <div className="bg" />
         <div className="bg bg2" />
@@ -51,7 +57,7 @@ const Register = () => {
         <div className="content-register">
           <div className="row justify-content-center">
             <div className="col-md-9">
-              <form onSubmit={register}>
+              <form onSubmit={handleRegister}>
                 <div className="mb-3">
                   <label className="form-label">Username</label>
                   <input
@@ -89,11 +95,11 @@ const Register = () => {
                   />
                 </div>
                 <button
-                  type="button"
+                  type="submit"
                   className="btn btn-primary rounded-pill px-5 mt-2"
-                  onClick={register}
+                  disabled={isLoading}
                 >
-                  {isLoading ? <LoadingButton /> : "Sign Up"}
+                  {isLoading ? "Loading..." : "Register"}
                 </button>
               </form>
               <div className="row my-3">

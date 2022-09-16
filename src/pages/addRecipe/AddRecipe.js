@@ -4,6 +4,8 @@ import iconUpload from "../../assets/images/icon-upload.png";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { ProfileContex } from "../../config/Contex";
+import { useNavigate } from "react-router-dom";
+import LoadingButton from "../../components/loadingComp/LoadingButton";
 
 const AddRecipe = () => {
   const [titleImage, setTitleImage] = useState("Add Recipe Image");
@@ -11,6 +13,9 @@ const AddRecipe = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const { token, id } = ProfileContex?._currentValue2;
+  const [category, setCategory] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleImage = (e) => {
     let image = e.target?.files[0];
@@ -19,17 +24,21 @@ const AddRecipe = () => {
     setSaveImage(image);
   };
 
-  console.log("saveImage", saveImage);
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+  };
 
   const handleAddRecipe = () => {
+    setLoading(true);
     if (!saveImage) {
-      Swal.fire("Insert Image first!");
+      Swal.fire("Insert food Image first!");
     } else {
       const formData = new FormData();
       formData.append("title", title);
       formData.append("ingredients", ingredients);
       formData.append("foodImage", saveImage);
       formData.append("id_user", parseInt(id));
+      formData.append("id_category", parseInt(category));
 
       const config = {
         headers: {
@@ -41,10 +50,13 @@ const AddRecipe = () => {
       axios
         .post(`${process.env.REACT_APP_API_URL}/recipes/add`, formData, config)
         .then((res) => {
-          Swal.fire("add Recipe Success");
-          window.location.href = "/";
+          setLoading(false);
+          Swal.fire("add Recipe Success").then((result) => {
+            result.isConfirmed && navigate("/");
+          });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -74,12 +86,9 @@ const AddRecipe = () => {
             <div className="form-floating mt-3">
               <select
                 className="form-select"
+                onChange={handleCategory}
                 id="floatingSelect"
-                aria-label="Floating label select example"
               >
-                <option selected disabled>
-                  Pick Category Food
-                </option>
                 <option value={1}>Cakes</option>
                 <option value={2}>Dessert</option>
                 <option value={3}>Fat Food</option>
@@ -106,8 +115,9 @@ const AddRecipe = () => {
                   type="button"
                   className="btn btn-warning button-add-recipe"
                   onClick={handleAddRecipe}
+                  disabled={loading}
                 >
-                  Submit
+                  {loading ? "Loading..." : "Submit"}
                 </button>
               </div>
             </div>
