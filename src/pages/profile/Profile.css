@@ -1,0 +1,55 @@
+.profile-wrapper {
+  margin-top: 65px !important;
+  height: 60vh;
+}
+
+.flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.image-profile {
+  width: 172px;
+  border-radius: 50%;
+}
+
+.name-profile {
+  width: 182px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+}
+
+.menu-color {
+  color: black !important;
+}
+
+.nav-link {
+  color: #575d63 !important;
+}
+
+/* card my recipe */
+.card-my-recipe {
+  width: 280px;
+  height: 190px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 15px !important;
+  transition: transform 0.2s;
+}
+
+.card-my-recipe:after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, transparent 0, transparent 30%, #000);
+  opacity: 0.8;
+}
+
+.card-my-recipe:hover {
+  transform: scale(1.05);
+}

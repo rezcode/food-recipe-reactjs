@@ -1,0 +1,46 @@
+.title-detail-recipe {
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 90px;
+}
+
+.image-detail-wrapper {
+  width: 600px;
+  height: 450px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.image-detail {
+  display: block;
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.button-comment {
+  width: 350px !important;
+}
+
+.img-user-comment {
+  border-radius: 50%;
+  width: 80px;
+}
+
+.user-name-comment {
+  font-weight: bolder;
+}
+
+/* Button Edit and Delete */
+.button-delete {
+  position: absolute;
+  top: 85%;
+  left: 83%;
+}
+
+.button-edit {
+  top: 85%;
+  position: absolute;
+  left: 75%;
+}
