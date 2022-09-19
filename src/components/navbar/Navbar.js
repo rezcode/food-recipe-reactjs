@@ -3,23 +3,20 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-import { ProfileContex } from "../../config/Contex";
+import { useNavigate } from "react-router-dom";
 import { Dropdown, ButtonGroup, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { resetLoggedUser } from "../../redux/features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navibar = () => {
-  const { token, username } = ProfileContex?._currentValue2;
-
-  const handleAlert = () => {
-    if (!token) {
-      Swal.fire("You need to login first");
-    }
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
-    window.localStorage.clear();
-    window.location.reload(false);
-    window.location.href = "/";
+    dispatch(resetLoggedUser());
+    Swal.fire("Logout Successfully");
   };
 
   return (
@@ -36,35 +33,55 @@ const Navibar = () => {
             <Nav className="me-auto">
               <Nav.Link></Nav.Link>
               <Nav.Link>
-                {token ? (
+                {user?.token ? (
                   <Link to="/add-recipe" className="nav-menu">
                     Add Recipe
                   </Link>
                 ) : (
-                  <Link to="/" onClick={handleAlert} className="nav-menu">
+                  <div
+                    onClick={() =>
+                      Swal.fire({
+                        icon: "info",
+                        text: "You need to login first",
+                      }).then(
+                        (result) => result.isConfirmed && navigate("/login")
+                      )
+                    }
+                    className="nav-menu"
+                  >
                     Add Recipe
-                  </Link>
+                  </div>
                 )}
               </Nav.Link>
               <Nav.Link>
-                {token ? (
+                {user?.token ? (
                   <Link to="/profile" className="nav-menu">
-                    Profile
+                    profile
                   </Link>
                 ) : (
-                  <Link to="/" onClick={handleAlert} className="nav-menu">
-                    Add Recipe
-                  </Link>
+                  <div
+                    onClick={() =>
+                      Swal.fire({
+                        icon: "info",
+                        text: "You need to login first",
+                      }).then(
+                        (result) => result.isConfirmed && navigate("/login")
+                      )
+                    }
+                    className="nav-menu"
+                  >
+                    Profile
+                  </div>
                 )}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              {token ? (
+              {user?.token ? (
                 <Dropdown size="sm" as={ButtonGroup}>
                   <Button variant="warning" size="sm">
-                    {username}
+                    {user?.name}
                   </Button>
 
                   <Dropdown.Toggle

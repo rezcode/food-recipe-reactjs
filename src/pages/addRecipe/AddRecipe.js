@@ -83,18 +83,20 @@ const AddRecipe = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
-            <div className="form-floating mt-3">
-              <select
-                className="form-select"
-                onChange={handleCategory}
-                id="floatingSelect"
-              >
-                <option value={1}>Cakes</option>
-                <option value={2}>Dessert</option>
-                <option value={3}>Fat Food</option>
-                <option value={4}>Vegan Food</option>
-              </select>
-              <label htmlFor="floatingSelect">Category</label>
+            <div className="row mt-3">
+              <div className="form-floating p-0">
+                <select
+                  className="form-select form-add-recipe-bgcolor"
+                  onChange={handleCategory}
+                  id="floatingSelect"
+                >
+                  <option value={1}>Cakes</option>
+                  <option value={2}>Dessert</option>
+                  <option value={3}>Fat Food</option>
+                  <option value={4}>Vegan Food</option>
+                </select>
+                <label htmlFor="floatingSelect">Category</label>
+              </div>
             </div>
             <div className="row mt-3">
               <div className="form-floating" style={{ padding: "0px" }}>
