@@ -38,6 +38,21 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
+// Get user profile
+export const getUser = createAsyncThunk(
+  "user/getUser",
+  async (userId, thunkAPI) => {
+    try {
+      const response = await authService.getUser(userId);
+      return response;
+    } catch (error) {
+      console.log(error);
+      // const message = error?.response?.data;
+      // return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -59,7 +74,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload.message;
-        state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;

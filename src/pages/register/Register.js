@@ -22,23 +22,14 @@ const Register = () => {
   );
 
   useEffect(() => {
-    if (isError) {
-      Swal.fire({
-        icon: "error",
-        text: message,
-      });
+    if (user) {
+      navigate("/");
     }
-    if (isSuccess) {
-      Swal.fire({
-        icon: "success",
-        text: message,
-      }).then(() => navigate("/login"));
-    }
-    dispatch(resetLoggedUser());
-  }, [user, isError, isSuccess, navigate, message, dispatch]);
+  }, [user, isError, navigate, message, dispatch]);
 
   const handleRegister = (e) => {
     e.preventDefault();
+    console.log("inside function", isSuccess);
     const body = {
       name,
       email,
@@ -47,6 +38,19 @@ const Register = () => {
     };
     dispatch(register(body));
   };
+
+  if (isSuccess) {
+    navigate("/login");
+    dispatch(resetLoggedUser());
+  }
+
+  if (isError) {
+    Swal.fire({
+      icon: "error",
+      text: message,
+    });
+    dispatch(resetLoggedUser());
+  }
 
   return (
     <>

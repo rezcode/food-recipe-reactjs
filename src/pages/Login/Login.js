@@ -3,7 +3,7 @@ import "./login.css";
 import logo from "../../assets/images/bibimbap (1).png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../redux/features/auth/authSlice";
+import { login, resetLoggedUser } from "../../redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -17,13 +17,7 @@ export default function Login() {
   );
 
   useEffect(() => {
-    if (isError) {
-      Swal.fire({
-        icon: "error",
-        text: message,
-      });
-    }
-    if (user?.token) {
+    if (user) {
       navigate("/");
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
@@ -37,8 +31,17 @@ export default function Login() {
     dispatch(login(formData));
   };
 
-  console.log(message);
+  if (isSuccess) {
+    navigate("/");
+  }
 
+  if (isError) {
+    Swal.fire({
+      icon: "error",
+      text: message,
+    });
+    dispatch(resetLoggedUser());
+  }
   return (
     <>
       <div>

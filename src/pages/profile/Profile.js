@@ -3,19 +3,18 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import "./Profile.css";
 import NotFound from "../../components/notFound/NotFound";
-import { ProfileContex } from "../../config/Contex";
 import axios from "axios";
 import MyRecipe from "../../components/myRecipe/MyRecipe";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const [userData, setUserData] = useState([]);
   const [dataMyRecipe, SetDataMyRecipe] = useState([]);
-  const { username, imageProfile, id, token } = ProfileContex?._currentValue2;
-  const idUser = parseInt(id);
+  const user = useSelector((state) => state.auth.user);
 
   const configHeaders = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${user?.token}`,
     },
   };
 
@@ -26,7 +25,7 @@ const Profile = () => {
 
   const getDataUser = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/users/${idUser}`, configHeaders)
+      .get(`${process.env.REACT_APP_API_URL}/users/${user?.id}`, configHeaders)
       .then((res) => {
         setUserData(res?.data?.data);
       })
@@ -38,7 +37,7 @@ const Profile = () => {
   const getDataMyRecipe = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/users/find/recipe/${idUser}`
+        `${process.env.REACT_APP_API_URL}/users/find/recipe/${user?.id}`
       );
       SetDataMyRecipe(response?.data);
     } catch (error) {

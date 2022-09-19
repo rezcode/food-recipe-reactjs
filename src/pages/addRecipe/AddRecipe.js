@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { ProfileContex } from "../../config/Contex";
 import { useNavigate } from "react-router-dom";
-import LoadingButton from "../../components/loadingComp/LoadingButton";
+import { useSelector } from "react-redux";
 
 const AddRecipe = () => {
   const [titleImage, setTitleImage] = useState("Add Recipe Image");
@@ -15,7 +15,10 @@ const AddRecipe = () => {
   const { token, id } = ProfileContex?._currentValue2;
   const [category, setCategory] = useState(1);
   const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+
+  console.log("user", user);
 
   const handleImage = (e) => {
     let image = e.target?.files[0];
@@ -37,12 +40,12 @@ const AddRecipe = () => {
       formData.append("title", title);
       formData.append("ingredients", ingredients);
       formData.append("foodImage", saveImage);
-      formData.append("id_user", parseInt(id));
+      formData.append("id_user", parseInt(user?.id));
       formData.append("id_category", parseInt(category));
 
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${user?.token}`,
           "Content-Type": "multipart/form-data; ",
         },
       };
@@ -83,18 +86,20 @@ const AddRecipe = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
-            <div className="form-floating mt-3">
-              <select
-                className="form-select"
-                onChange={handleCategory}
-                id="floatingSelect"
-              >
-                <option value={1}>Cakes</option>
-                <option value={2}>Dessert</option>
-                <option value={3}>Fat Food</option>
-                <option value={4}>Vegan Food</option>
-              </select>
-              <label htmlFor="floatingSelect">Category</label>
+            <div className="row mt-3">
+              <div className="form-floating p-0">
+                <select
+                  className="form-select form-add-recipe-bgcolor"
+                  onChange={handleCategory}
+                  id="floatingSelect"
+                >
+                  <option value={1}>Cakes</option>
+                  <option value={2}>Dessert</option>
+                  <option value={3}>Fat Food</option>
+                  <option value={4}>Vegan Food</option>
+                </select>
+                <label htmlFor="floatingSelect">Category</label>
+              </div>
             </div>
             <div className="row mt-3">
               <div className="form-floating" style={{ padding: "0px" }}>
