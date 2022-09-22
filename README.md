@@ -1,70 +1,134 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div id="top"></div>
 
-## Available Scripts
+<!-- PROJECT LOGO -->
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
+<div align="center">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<a href="https://github.com/rezcode/mama-recipe-nextjs.git">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img src="https://res.cloudinary.com/dll4afml9/image/upload/v1662477322/screenshots/logo_wqvc5k.png" alt="Logo" width="150px">
 
-### `npm test`
+</a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h3 align="center">Mama Recipe App Frontend Mobile View</h3>
 
-### `npm run build`
+<p align="center">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create an app for building Mama Recipe frontend website using React JS.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</div>
 
-### `npm run eject`
+<!-- ABOUT THE PROJECT -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##  About The Project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Mama Recipe is web based app for provide recipe food with videos step, ingredients and comment section for all users
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<!-- SCREENSHOTS -->
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##  Screenshots
 
-## Learn More
+<table>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<tr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864056/screenshots/Mama-Recipe/Home_cm6wke.png" alt="Home" width="400px"></td>
 
-### Code Splitting
+<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864048/screenshots/Mama-Recipe/Profile_prtzv0.png" alt="Home" width="400px"></td>
+</tr>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<tr>
+<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864050/screenshots/Mama-Recipe/Product_Detail_ndcw95.png" alt="product-detail" width="400px"></td>
+<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864037/screenshots/Mama-Recipe/Add_Recipe_ptnbbl.png" alt="product-detail" width="400px"></td>
+</tr>
 
-### Analyzing the Bundle Size
+</table>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+###  Built With
 
-### Making a Progressive Web App
+This app was built with some technologies below:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [React js](https://reactjs.org/)
 
-### Advanced Configuration
+- [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
-### Deployment
+- [Axios](https://www.npmjs.com/package/axios)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<!-- GETTING STARTED -->
 
-### `npm run build` fails to minify
+##  Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+###  Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+* [Node.js](https://nodejs.org/en/download/)
+
+###  Requirements
+
+* [Node.js](https://nodejs.org/en/)
+
+* [NPM](https://www.npmjs.com/)
+
+* [Yarn](https://yarnpkg.com/) optional
+
+###  Installation
+
+- Clone the Repo
+
+```
+
+https://github.com/rezcode/food-recipe-reactjs.git
+
+```
+
+```
+
+- Install Module
+
+```
+
+npm install
+
+```
+
+- <a href="#setup-env-example">Setup .env</a>
+
+- Type ` npm run build` To Build Project
+
+- Type ` npm run start` To Start Project
+
+### Setup .env example
+
+Create .env file in your root project folder.
+
+```env
+
+REACT_APP_API_URL=https://mama-food-recipe.herokuapp.com
+
+```
+
+##  Related Project
+
+:rocket: [`Backend Mama-Recipe`](https://github.com/rezcode/food-recipe-expressJS.git)
+
+:rocket: [`Frontend Mama-Recipe`](https://github.com/rezcode/food-recipe-reactjs.git)
+
+:rocket: [`Demo`](https://mamarecipee.netlify.app/)
+
+##  Contact
+
+My Email : rezharians@gmail.com
+
+##  License
+
+Distributed under the [MIT](/LICENSE) License.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
