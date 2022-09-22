@@ -16,6 +16,7 @@ const Navibar = () => {
 
   const handleLogout = () => {
     dispatch(resetLoggedUser());
+    navigate("/");
     Swal.fire("Logout Successfully");
   };
 
