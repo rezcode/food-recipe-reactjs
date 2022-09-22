@@ -33,19 +33,18 @@ Mama Recipe is web based app for provide recipe food with videos step, ingredien
 
 ##  Screenshots
 
+### Home page
+<img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864056/screenshots/Mama-Recipe/Home_cm6wke.png" alt="Home" width="600px">
+
+### Profile page
+<img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864048/screenshots/Mama-Recipe/Profile_prtzv0.png" alt="prrofile" width="600px">
 <table>
 
-<tr>
+### Recipe detail page
+<img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864050/screenshots/Mama-Recipe/Product_Detail_ndcw95.png" alt="product-detail" width="600px">
 
-<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864056/screenshots/Mama-Recipe/Home_cm6wke.png" alt="Home" width="400px"></td>
-
-<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864048/screenshots/Mama-Recipe/Profile_prtzv0.png" alt="Home" width="400px"></td>
-</tr>
-
-<tr>
-<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864050/screenshots/Mama-Recipe/Product_Detail_ndcw95.png" alt="product-detail" width="400px"></td>
-<td valign="top"><img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864037/screenshots/Mama-Recipe/Add_Recipe_ptnbbl.png" alt="product-detail" width="400px"></td>
-</tr>
+### Add new recipe page
+<img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864037/screenshots/Mama-Recipe/Add_Recipe_ptnbbl.png" alt="add-recipe" width="600px">
 
 </table>
 
