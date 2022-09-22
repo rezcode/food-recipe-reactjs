@@ -34,7 +34,7 @@ Mama Recipe is web based app for provide recipe food with videos step, ingredien
 ##  Screenshots
 
 ### Home page
-<img src="https://upload-widget-s.cloudinary.com/63bc55b0-90ea-44ab-b965-0f3795f71872" alt="Dashboard" width="600px">
+<img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864911/screenshots/Mama-Recipe/Home_fbymxa.png" alt="Dashboard" width="600px">
 
 ### Profile page
 <img src="https://res.cloudinary.com/dll4afml9/image/upload/v1663864048/screenshots/Mama-Recipe/Profile_prtzv0.png" alt="prrofile" width="600px">
